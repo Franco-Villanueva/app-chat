@@ -1,17 +1,36 @@
 import React from "react";
-import { View, Text, StyleSheet} from 'react-native'
+import { Image,View, Text, StyleSheet} from 'react-native'
 import StyledText from "./StyledText";
+import RepositoryStats from "./RepositoryStats";
+import theme from "../theme";
+
+
+const RepositoryItemHeader = ({image, name, gender, created}) => {
+    return(
+        <View style={{flexDirection: 'row', paddingBottom: 2 }}>
+
+            <View style={{ paddingRight: 10 }}>
+                <Image style={styles.image} source={{uri: image}} />
+            </View>
+            
+            <View style={{ flex: 1}}>
+                <StyledText style={styles.name} fontWeight={'bold'} fontSize={'subheading'} >{name}</StyledText>
+                <StyledText style={styles.gender} fontWeight={'bold'} fontSize={'subheading'} >{gender}</StyledText>
+                <StyledText fontWeight={'bold'} fontSize={'subheading'} >{created}</StyledText>
+            </View>
+            
+        </View>
+        
+    )
+}
+
 
 
 const RepositoryItem = (props) => {
     return ( 
         <View key={props.id} style={styles.container}>
-            <StyledText big bold>ID:{props.id}</StyledText>
-            <StyledText blue >name:{props.name}</StyledText>
-            <StyledText small>status:{props.status}</StyledText>
-            <StyledText small>specie:{props.species}</StyledText>
-            <StyledText small>origen:{props.origin.name}</StyledText>
-
+            <RepositoryItemHeader {...props} />
+            <RepositoryStats {...props} />
         </View>
      );
 }
@@ -20,10 +39,26 @@ const RepositoryItem = (props) => {
 const styles = StyleSheet.create({
     container:{
         padding:20,
-        paddingBottom: 5,
-        paddingTop: 5
+        paddingVertical: 5,
     },
-
+    name:{
+        padding: 4,
+        color: theme.colors.white,
+        backgroundColor: theme.colors.primary,
+        alignSelf: 'flex-start',
+        marginVertical: 4,
+        borderRadius: 4,
+        overflow: 'hidden'
+    },
+    image: {
+        width:48,
+        height: 48,
+        borderRadius: 4
+    },
+    gender:{
+        color:theme.colors.textSecondary
+    }
+    
 })
 
 export default RepositoryItem;

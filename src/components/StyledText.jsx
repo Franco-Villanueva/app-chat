@@ -4,10 +4,16 @@ import theme from '../theme.js'
 
 const styles = StyleSheet.create({
     text:{
-        fontSize: theme.fontSizes.body ,
+        fontSize: theme.fontSizes.body,
         color: theme.colors.textPrimary,
         fontFamily: theme.fonts.main,
         fontWeight: theme.fontWeights.normal
+    },
+    colorPrimary:{
+        color: theme.colors.textPrimary
+    },
+    colorSecondary:{
+        color: theme.colors.textSecondary
     },
     subheading:{
         fontSize: theme.fontSizes.subheading
@@ -15,28 +21,32 @@ const styles = StyleSheet.create({
     bold:{
         fontWeight: theme.fontWeights.bold,
     },
-    big:{
-        fontSize: 20,
-    },
-    small:{
-        fontSize: 10,
-    },
-})
+    textAlignCenter:{
+        textAlign: 'center'
+    }
+    // big:{
+    //     fontSize: 20,
+    // },
+    // small:{
+    //     fontSize: 10,
+    // },
+});
 
-export default function StyledText ({blue, bold, big, small, children}){
+export default function StyledText ({children, align, color, fontSize, fontWeight, style, ...restOfProps}){
 
     const textStyles = [
         styles.text,
-        blue && styles.blue,
-        big && styles.big,
-        small && styles.small,
-        bold && styles.bold,
+        align === 'center' && styles.textAlingCenter,
+        color === 'primary' && styles.colorPrimary,
+        color === 'secondary' && styles.colorSecondary,
+        fontSize === 'subheading' && styles.subheading,
+        fontWeight === 'bold' && styles.bold,
+        style // añadir cualquier estilo personalizado adicional
+    ];
 
-    ]
-
-    return(
-        <Text style={textStyles}>
+    return (
+        <Text style={textStyles} {...restOfProps}>
             {children}
         </Text>
-    )
+    );
 }

@@ -1,12 +1,18 @@
 import React from "react";
-import Constants from "expo-constants";
 import { View, Text } from "react-native";
-import RepositoryList from "./RepositoryList";
+import RepositoryList from "./RepositoryList.jsx";
+import AppBar from "./AppBar.jsx";
+import {Route, Routes, Navigate} from 'react-router-native'
 
 const Main = () => {
     return ( 
-        <View style={{marginTop:Constants.statusBarHeight , flexGrow:1}}>
-            <RepositoryList />
+        <View style={{ flexGrow:1 }}>
+            <AppBar />
+            <Routes>
+                <Route path='/' element={<RepositoryList />} />
+                <Route path='/sign-in' element={<Text>Sign In</Text>} />
+                <Route path='*' element={<Navigate to='/' />} />
+            </Routes>
         </View>
      );
 }
