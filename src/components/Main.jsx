@@ -1,8 +1,14 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import RepositoryList from "./RepositoryList.jsx";
-import AppBar from "./AppBar.jsx";
+import AppBar from "./AppBar";
 import {Route, Routes, Navigate} from 'react-router-native'
+import LogInPage from "../pages/LogIn.jsx";
+
+// const AppBar = Platform.select({
+//     android: () => require('./IOSAppBar.jsx').default,
+//     default: () => require('./AppBar.jsx').default
+// })()
 
 const Main = () => {
     return ( 
@@ -10,7 +16,7 @@ const Main = () => {
             <AppBar />
             <Routes>
                 <Route path='/' element={<RepositoryList />} />
-                <Route path='/sign-in' element={<Text>Sign In</Text>} />
+                <Route path='/sign-in' element={<LogInPage />} />
                 <Route path='*' element={<Navigate to='/' />} />
             </Routes>
         </View>
