@@ -13,15 +13,15 @@ const RepositoryStats = props => {
         <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
             <View>
                 <StyledText  fontWeight={'bold'} >status:</StyledText>
-                <StyledText >{props.status}</StyledText>
+                <StyledText >{props.stargazersCount}</StyledText>
             </View>
             <View>
                 <StyledText fontWeight={'bold'}>specie:</StyledText>
-                <StyledText >{props.species}</StyledText>
+                <StyledText >{props.forksCount}</StyledText>
             </View>
             <View>
                 <StyledText fontWeight={'bold'}>origen:</StyledText>
-                <StyledText >{props.origin.name}</StyledText>
+                <StyledText >{props.ratingAverage}</StyledText>
             </View>
             
         </View>

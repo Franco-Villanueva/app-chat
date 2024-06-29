@@ -1,6 +1,14 @@
 import { Platform } from "react-native";
 
 const theme = {
+    logIn:{
+        textPrimary:'#ff6b6b',
+        textSecondary:'#757575',
+        white: '#fff'
+    },
+    input:{
+        borderRadius: 4,
+    },
     appBar:{
         primary:'#24292e',
         textPrimary: "#fff",
@@ -15,11 +23,12 @@ const theme = {
     fontSizes: {
         body: 14,
         subheading: 16,
+        title: 32
     },
     fonts: {
         main: Platform.select({
             ios: 'Arial',
-            android: 'roboto',
+            android: 'System',
             default: 'System'
         }),
     },
